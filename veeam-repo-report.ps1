@@ -3,7 +3,8 @@
 # 1) Load module & connect
 Import-Module Veeam.Backup.PowerShell -WarningAction SilentlyContinue
 $creds = Get-Credential -Message 'Enter Veeam Backup & Replication credentials'
-Connect-VBRServer -Server daa-mg-bul-002a -Port 9392 -Credential $creds
+$serverName = Read-Host -Prompt "Enter the Veeam Backup & Replication server name"
+Connect-VBRServer -Server $serverName -Port 9392 -Credential $creds
 
 # 2) Helper to extract bytes from a VMemorySize string
 function Get-BytesFromVMemorySize {
